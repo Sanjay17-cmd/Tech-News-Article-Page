@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech News Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="register.html">Register</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <header>
+      <h1>Tech News Home</h1>
+      <p>A simple beginner page for tech news, cookies, and dynamic JavaScript.</p>
+    </header>
+
+    <section class="section-card">
+      <h2>News Slider</h2>
+      <div class="slider-box">
+        <button id="prevBtn" class="small-button">Prev</button>
+        <div class="slide-card">
+          <h3 id="articleTitle">Loading...</h3>
+          <p id="articleSummary">See the article summary here.</p>
+        </div>
+        <button id="nextBtn" class="small-button">Next</button>
+      </div>
+      <p class="small-text">Slides advance automatically every 5 seconds.</p>
+    </section>
+
+    <section class="section-card">
+      <h2>Visitor Info</h2>
+      <p id="welcomeText">Welcome! Your data will appear here!</p>
+      <button id="showCookiesBtn" class="small-button">Show Cookies</button>
+      <button id="clearCookiesBtn" class="small-button">Clear Cookies</button>
+      <p id="cookieDisplay" class="small-text">ur data will appear here!</p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

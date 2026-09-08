@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Tech News</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="register.html">Register</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <header>
+      <h1>Contact Tech News</h1>
+      <p>Send a short message or ask a quick question.</p>
+    </header>
+
+    <section class="section-card">
+      <form id="contactForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@gmail.com" required />
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Topic of your message" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write a short question or comment" required></textarea>
+
+        <button type="submit" class="submit-button">Send Message</button>
+      </form>
+
+      <button id="showCookiesBtn" class="small-button">Show Cookies</button>
+      <button id="clearCookiesBtn" class="small-button">Clear Cookies</button>
+      <p id="cookieDisplay" class="small-text">ur data will appear here!</p>
+      <div id="contactResult" class="article-details"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
