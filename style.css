@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 20px;
+}
+img {
+  border: 12px solid #94e90b;
+  width: 500px;
+  height: 300px;
+}
+table {
+  border-collapse: collapse;
+  width: 50%;
+}
+th, td {
+  border: 3px solid #47e2f7;
+  padding: 5px;
+  text-align: center;
+}
+.highlight {
+  background-color: #fffb00;
+}
+nav a {
+  text-decoration: none;
+  color: #1900ff;
+}
