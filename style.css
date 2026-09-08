@@ -1,26 +1,30 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 20px;
-}
-img {
-  border: 12px solid #94e90b;
-  width: 500px;
-  height: 300px;
-}
-table {
-  border-collapse: collapse;
-  width: 50%;
-}
-th, td {
-  border: 3px solid #47e2f7;
-  padding: 5px;
-  text-align: center;
-}
-.highlight {
-  background-color: #fffb00;
-}
-nav a {
-  text-decoration: none;
-  color: #1900ff;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#e8eff5;color:#1f2b35;line-height:1.5}
+body a{color:#0f4c75;text-decoration:none}
+body a:hover{text-decoration:underline}
+.box{width:min(900px,95%);margin:24px auto;padding:20px;background:#fff;border-radius:16px;box-shadow:0 10px 28px rgba(0,0,0,.08)}
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+nav a{padding:10px 16px;background:#1a5f7a;color:#fff;border-radius:8px;font-weight:700}
+header{margin:16px 0}
+h1{font-size:1.95rem;color:#1b3f5b;margin-bottom:8px}
+h2{font-size:1.3rem;color:#20485c;margin-bottom:10px}
+p,li,small,address{font-size:1rem}
+.card{margin:18px 0;padding:18px;background:#f7fbff;border:1px solid #d7e7f3;border-radius:14px}
+ul{list-style:inside disc;margin-left:18px}
+figure{margin:18px 0}
+img{width:100%;max-width:560px;border-radius:12px;display:block}
+figcaption{font-size:.95rem;color:#5b7384;margin-top:8px}
+form{margin-top:12px}
+label{display:block;margin:12px 0 6px;font-weight:700}
+input,select,textarea,button{width:100%;padding:12px;border:1px solid #b8cbd7;border-radius:10px;font-size:1rem}
+select{appearance:none;background:#fff}
+textarea{min-height:100px;resize:vertical}
+button{background:#1a5f7a;color:#fff;border:none;cursor:pointer;transition:background .2s}
+button:hover{background:#13455a}
+.checkbox{display:flex;align-items:center;gap:8px;margin-top:12px;font-weight:500}
+.checkbox input{width:auto}
+.result{background:#eef7fb;padding:14px;border-radius:12px;margin-top:16px}
+details{padding:12px;background:#e3f2ff;border-radius:10px}
+summary{font-weight:700;cursor:pointer}
+footer p{text-align:center;font-size:.95rem;color:#5a7080}
+@media (max-width:560px){.box{padding:16px}nav{flex-direction:column;align-items:center}}
