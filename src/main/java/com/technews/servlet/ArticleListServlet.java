@@ -10,48 +10,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/articles")
 public class ArticleListServlet extends HttpServlet {
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        List<Article> list = new ArrayList<>();
-        String errorMsg = null;
-        
-        try {
-            Connection conn = DBConnection.getConnection();
-            if (conn == null) {
-                errorMsg = "Database Connection Failed! Check MySQL server, username/password in DBConnection.java, or missing MySQL Connector JAR in WEB-INF/lib.";
-            } else {
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM articles");
 
-                while (rs.next()) {
-                    Article a = new Article(
-                        rs.getInt("id"),
-                        rs.getString("title"),
-                        rs.getString("content"),
-                        rs.getString("author")
-                    );
-                    list.add(a);
+        List<Article> articles = new ArrayList<>();
+
+        try (Connection conn = DBConnection.getConnection()) {
+            if (conn != null) {
+                try (PreparedStatement createStmt = conn.prepareStatement(
+                        "CREATE TABLE IF NOT EXISTS articles (id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255) NOT NULL, content TEXT NOT NULL, author VARCHAR(100) NOT NULL)")) {
+                    createStmt.executeUpdate();
                 }
-                rs.close();
-                stmt.close();
-                conn.close();
+
+                String sql = "SELECT * FROM articles ORDER BY id DESC";
+                try (PreparedStatement stmt = conn.prepareStatement(sql);
+                     ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        articles.add(new Article(
+                                rs.getInt("id"),
+                                rs.getString("title"),
+                                rs.getString("content"),
+                                rs.getString("author")
+                        ));
+                    }
+                }
             }
         } catch (Exception e) {
-            errorMsg = "SQL Error: " + e.getMessage();
             e.printStackTrace();
         }
 
-        request.setAttribute("dbError", errorMsg);
-        request.setAttribute("articles", list);
-        request.getRequestDispatcher("list.jsp").forward(request, response);
+        request.setAttribute("articles", articles);
+        request.getRequestDispatcher("/list.jsp").forward(request, response);
     }
 }

@@ -13,10 +13,9 @@ import java.sql.PreparedStatement;
 
 @WebServlet("/add-article")
 public class AddArticleServlet extends HttpServlet {
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         request.setCharacterEncoding("UTF-8");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
@@ -24,20 +23,22 @@ public class AddArticleServlet extends HttpServlet {
 
         String errorMsg = null;
 
-        try {
-            Connection conn = DBConnection.getConnection();
+        try (Connection conn = DBConnection.getConnection()) {
             if (conn == null) {
-                errorMsg = "Could not connect to MySQL Database. Check DB credentials in DBConnection.java.";
+                errorMsg = "Could not connect to MySQL Database.";
             } else {
+                try (PreparedStatement createStmt = conn.prepareStatement(
+                        "CREATE TABLE IF NOT EXISTS articles (id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255) NOT NULL, content TEXT NOT NULL, author VARCHAR(100) NOT NULL)")) {
+                    createStmt.executeUpdate();
+                }
+
                 String sql = "INSERT INTO articles (title, content, author) VALUES (?, ?, ?)";
-                PreparedStatement pstmt = conn.prepareStatement(sql);
-                pstmt.setString(1, title);
-                pstmt.setString(2, content);
-                pstmt.setString(3, author);
-                
-                pstmt.executeUpdate();
-                pstmt.close();
-                conn.close();
+                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setString(1, title);
+                    pstmt.setString(2, content);
+                    pstmt.setString(3, author);
+                    pstmt.executeUpdate();
+                }
             }
         } catch (Exception e) {
             errorMsg = e.getMessage();
@@ -45,7 +46,6 @@ public class AddArticleServlet extends HttpServlet {
         }
 
         if (errorMsg != null) {
-            // Redirect with error message
             response.sendRedirect("add.jsp?error=" + java.net.URLEncoder.encode(errorMsg, "UTF-8"));
         } else {
             response.sendRedirect("articles");
