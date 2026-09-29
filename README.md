@@ -17,17 +17,17 @@ Screenshots are intentionally pending. Upload the corresponding image files into
 
 <div align="center">
   <h3>Login page</h3>
-  <p>Pending image upload: <code>screenshots/login-page.png</code></p>
+  <img src="screenshots/login-page.png" alt="Login page screenshot">
 </div>
 
 <div align="center">
   <h3>Article list</h3>
-  <p>Pending image upload: <code>screenshots/article-list.png</code></p>
+  <img src="screenshots/article-list.png" alt="Article list screenshot">
 </div>
 
 <div align="center">
   <h3>Feedback page</h3>
-  <p>Pending image upload: <code>screenshots/feedback-page.png</code></p>
+  <img src="screenshots/feedback-page.png" alt="Feedback page screenshot">
 </div>
 
 ## Requirements
