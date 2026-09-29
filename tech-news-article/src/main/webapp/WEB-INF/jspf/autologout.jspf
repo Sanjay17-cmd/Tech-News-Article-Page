@@ -1,0 +1,12 @@
+<script>
+    var __logoutTimer;
+    function __autoLogout() { window.location.href = "logout"; }
+    function __resetLogoutTimer() {
+        clearTimeout(__logoutTimer);
+        __logoutTimer = setTimeout(__autoLogout, 120000); // 2 minutes
+    }
+    document.addEventListener('mousemove', __resetLogoutTimer);
+    document.addEventListener('keydown', __resetLogoutTimer);
+    document.addEventListener('click', __resetLogoutTimer);
+    __resetLogoutTimer();
+</script>

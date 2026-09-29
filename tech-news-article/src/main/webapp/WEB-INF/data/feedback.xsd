@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="feedbacks">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="feedback" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="email" type="xs:string"/>
+                            <xs:element name="subject" type="xs:string"/>
+                            <xs:element name="message" type="xs:string"/>
+                            <xs:element name="rating" type="xs:integer"/>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:integer" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
